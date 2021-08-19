@@ -1,6 +1,6 @@
-# from dataclasses import dataclass
+from dataclasses import dataclass
 
-# @dataclass()
+@dataclass()
 class ElectricCharger:
     sku: str
     location: str
