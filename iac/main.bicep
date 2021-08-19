@@ -21,6 +21,7 @@ resource tripapp 'Microsoft.Web/sites@2021-01-15' = {
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
+    appCommandLine: 'startup.sh'
     siteConfig: {
       minTlsVersion: '1.2'
       linuxFxVersion: 'python|3.8'
