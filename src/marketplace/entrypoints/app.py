@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import uvicorn
 from marketplace.domain import model
 # from marketplace import config
 # import logging
@@ -31,3 +32,6 @@ def available_items():
 @app.get("/items")
 def available_items():
     return "hello items 2" 
+    
+if __name__ == '__main__':
+    uvicorn.run(app=app, host='0.0.0.0', port=8000)

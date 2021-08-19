@@ -25,12 +25,6 @@ resource appservice 'Microsoft.Web/sites@2021-01-15' = {
       minTlsVersion: '1.2'
       linuxFxVersion: 'python|3.8'
       appCommandLine: 'startup.sh'
-      appSettings: [
-        {
-          name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
-          value: appInsights.properties.InstrumentationKey
-        }
-      ]
     }
   }
 }
@@ -40,7 +34,11 @@ resource tripAppSettings 'Microsoft.Web/sites/config@2021-01-15' = {
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appInsights.properties.InstrumentationKey
     DBCONNECTION_STRING: 'teststring'
+    SCM_DO_BUILD_DURING_DEPLOYMENT: 1
   }
+  dependsOn: [
+    appservice
+  ]
 }
 
 resource tripAppLogging 'Microsoft.Web/sites/config@2021-01-15' = {

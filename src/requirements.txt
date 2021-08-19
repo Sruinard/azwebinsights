@@ -1,3 +1,2 @@
-fastapi
-uvicorn
-# opencensus-ext-azure==1.0.8
+fastapi[all]
+uvicorn[standard]
