@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from marketplace.domain import model
 from marketplace import config
-import logging
-from opencensus.ext.azure.log_exporter import AzureLogHandler
+# import logging
+# from opencensus.ext.azure.log_exporter import AzureLogHandler
 
 # LOGGER = logging.getLogger(__name__)
 # LOGGER.addHandler(
