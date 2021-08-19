@@ -15,16 +15,16 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   }
 }
 
-resource tripapp 'Microsoft.Web/sites@2021-01-15' = {
-  name: 'trip-app-sruinard'
+resource appservice 'Microsoft.Web/sites@2021-01-15' = {
+  name: 'marketplace-sruinard'
   location: resourceGroup().location
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
-    appCommandLine: 'startup.sh'
     siteConfig: {
       minTlsVersion: '1.2'
       linuxFxVersion: 'python|3.8'
+      appCommandLine: 'startup.sh'
       appSettings: [
         {
           name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
@@ -36,7 +36,7 @@ resource tripapp 'Microsoft.Web/sites@2021-01-15' = {
 }
 
 resource tripAppSettings 'Microsoft.Web/sites/config@2021-01-15' = {
-  name: '${tripapp.name}/appsettings'
+  name: '${appservice.name}/appsettings'
   properties: {
     APPINSIGHTS_INSTRUMENTATIONKEY: appInsights.properties.InstrumentationKey
     DBCONNECTION_STRING: 'teststring'
@@ -44,9 +44,8 @@ resource tripAppSettings 'Microsoft.Web/sites/config@2021-01-15' = {
 }
 
 resource tripAppLogging 'Microsoft.Web/sites/config@2021-01-15' = {
-  name: '${tripapp.name}/logs'
+  name: '${appservice.name}/logs'
   properties: {
-    appCommandLine: 'startup.sh'
     applicationLogs: {
       fileSystem: {
         level: 'Warning'
