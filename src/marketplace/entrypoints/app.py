@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from marketplace.domain import model
-from marketplace import config
+# from marketplace import config
 # import logging
 # from opencensus.ext.azure.log_exporter import AzureLogHandler
 
@@ -13,17 +13,18 @@ app = FastAPI()
 
 
 DATABASE = [
-    model.ElectricCharger(
-        sku='echarger',
-        location='WestEurope'
-    )
+    # model.ElectricCharger(
+    #     sku='echarger',
+    #     location='WestEurope'
+    {
+        "sku": "123"
+    }
 ]
-
-properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+# properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
 
 @app.get("/")
 def available_items():
-    print(config.get_log_connection_string()) 
+    # print(config.get_log_connection_string()) 
     # logging.warning("Hello Stef Ruinard from Logs", extra=properties)
     return DATABASE 
 
