@@ -1,0 +1,2 @@
+fastapi[all]
+opencensus-ext-azure==1.0.8
